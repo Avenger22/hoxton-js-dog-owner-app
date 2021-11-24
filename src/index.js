@@ -4,10 +4,11 @@ console.log(data);
 function createElement(dog) {
 
     const mainEl = document.querySelector('.main')
-
+    mainEl.innerHTML = ''
     //create a section
     const sectionEl = document.createElement('section')
     sectionEl.setAttribute('class', 'main__dog-section')
+    // sectionEl.innerHTML = ''
     
     //create an h2
     const h2El = document.createElement('h2')
@@ -49,6 +50,25 @@ function createElement(dog) {
     //appending to section then to main
     sectionEl.append(h2El, imgEl, divEl, p2El, btnEl)
     mainEl.append(sectionEl)
+
+    //event for small button
+    btnEl.addEventListener('click', function (event) {
+
+        if (btnEl.textContent === "Good dog!") {
+            p2El.textContent = ''
+            p2El.append(emEl)
+            p2El.textContent += "No!"
+            btnEl.textContent = "Bad dog!"
+        }
+
+        else if (btnEl.textContent === "Bad dog!") {
+            p2El.textContent = ''
+            p2El.append(emEl)
+            p2El.textContent += "Yes!"
+            btnEl.textContent = "Good dog!"
+        }
+
+    })
 
 }
 
@@ -133,8 +153,6 @@ function creatingForm(dog) {
             }
             formEl.reset()
             formEl.remove()
-            sectionEl.remove()
-            // liEl.reset()
         })
 
     })
@@ -168,9 +186,9 @@ function interactiveHeaderButton(dog) {
 
     //adding event listeners
     liEl.addEventListener('click', function (event) {
-
+        // let mainEl = document.querySelector('.main')
         for (const element of data) {
-
+            // mainEl.innerHTML = ''
             if (element.name === liEl.textContent) {
                 createElement(element)
             }
@@ -187,17 +205,3 @@ const liEl = document.querySelector('.dogs-list__button--add')
 liEl.addEventListener('click', function (event) {
     creatingForm(data)
 })
-
-// const liDogEl = document.querySelectorAll('.dogs-list__button')
-
-// const form = document.querySelector('.form')
-// const formValue = form.name.value
-
-// liDogEl.addEventListener('click', function (event) {
-//     event.preventDefault()
-//     for (const element of data) {
-//         if (element.name === ) {
-//             createElement(element)
-//         }
-//     }
-// })
