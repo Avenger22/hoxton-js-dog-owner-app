@@ -52,11 +52,6 @@ function createElement(dog) {
 
 }
 
-function deleteElement() {
-    const sectionEl = document.createElement('section')
-    sectionEl.delete()
-}
-
 function creatingForm(dog) {
 
     //get the section from html
