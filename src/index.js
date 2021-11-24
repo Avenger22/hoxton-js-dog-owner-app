@@ -191,12 +191,19 @@ function interactiveHeaderButton(dog) {
             // mainEl.innerHTML = ''
             if (element.name === liEl.textContent) {
                 createElement(element)
+                deselectAllCards()
+                liEl.classList.add('selected')
             }
 
         }
 
     })
 
+}
+
+function deselectAllCards() {
+    const listItem = document.querySelector('.dogs-list__button.selected')
+    if (listItem) listItem.classList.remove('selected')
 }
 
 loopingArrayToDisplay()
