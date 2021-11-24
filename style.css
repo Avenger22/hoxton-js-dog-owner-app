@@ -4,6 +4,10 @@
   padding: 0;
 }
 
+body {
+  overflow: scroll;
+}
+
 /* Global */
 
 :root {
@@ -17,7 +21,7 @@ body {
   font-family: sans-serif;
   color: var(--dark-text);
   background-color: var(--white);
-  overflow: hidden;
+  overflow: scroll;
 }
 
 img {
