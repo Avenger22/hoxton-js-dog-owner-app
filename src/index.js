@@ -55,7 +55,8 @@ function createElement(dog) {
 
 //this displays the data obect 
 function loopingArrayToDisplay() {
-    for (const element of data) {
+    let element
+    for (element of data) {
         createElement(element)
         interactiveHeaderButton(element)
     }
@@ -76,6 +77,11 @@ function interactiveHeaderButton(dog) {
 
     //apend the li to ul
     ulEl.append(liEl)
+
+    //adding event listeners
+    liEl.addEventListener('click', function (event) {
+
+    })
 }
 
 function creatingForm() {
@@ -136,6 +142,10 @@ function creatingForm() {
     sectionEl.append(h2El, formEl)
 
 }
+
+// function addingInteractivity() {
+
+// }
 
 loopingArrayToDisplay()
 creatingForm()
