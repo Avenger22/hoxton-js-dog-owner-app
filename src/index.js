@@ -1,5 +1,4 @@
 console.log(data);
-// WRITE YOUR CODE BELOW!
 
 //this creates element form the object
 function createElement(dog) {
@@ -53,38 +52,7 @@ function createElement(dog) {
 
 }
 
-//this displays the data obect 
-function loopingArrayToDisplay() {
-    let element
-    for (element of data) {
-        createElement(element)
-        interactiveHeaderButton(element)
-    }
-
-    console.log(`Name of the dog : ${element.name}
-    bio is : ${element.bio}
-    and the image src is: ${element.image}`)
-}
-
-//header menu wich is the list with names of dog
-function interactiveHeaderButton(dog) {
-    const ulEl = document.querySelector('.dogs-list')
-
-    //create a dog list item header menu
-    const liEl = document.createElement('li')
-    liEl.setAttribute('class', 'dogs-list__button')
-    liEl.textContent = dog.name
-
-    //apend the li to ul
-    ulEl.append(liEl)
-
-    //adding event listeners
-    liEl.addEventListener('click', function (event) {
-
-    })
-}
-
-function creatingForm() {
+function creatingForm(dog) {
 
     //get the section from html
     const sectionEl = document.querySelector('.main__dog-section')
@@ -141,11 +109,52 @@ function creatingForm() {
 
     sectionEl.append(h2El, formEl)
 
+    //events for the form this has a subevent
+    formEl.addEventListener('submit', function (event) {
+        event.preventDefault()
+
+        const ulEl = document.querySelector('.dogs-list')
+
+        //create a dog list item header menu
+        const liEl = document.createElement('li')
+        liEl.setAttribute('class', 'dogs-list__button')
+        liEl.textContent = formEl.name.value
+
+        //apend the li to ul
+        ulEl.append(liEl)
+
+        //event listener for the list el wich interacts with the form
+        liEl.addEventListener('click', function (event) {
+            event.preventDefault()
+            for (const element of data) {
+                if (element.name === formEl.name.value) {
+                    createElement(element)
+                }
+            }
+            formEl.reset()
+            formEl.remove()
+            sectionEl.remove()
+            // liEl.reset()
+        })
+
+    })
+
 }
 
-// function addingInteractivity() {
+const liEl = document.querySelector('.dogs-list__button--add')
+liEl.addEventListener('click', function (event) {
+    creatingForm(data)
+})
 
-// }
+const liDogEl = document.querySelectorAll('.dogs-list__button')
+// const form = document.querySelector('.form')
+// const formValue = form.name.value
 
-loopingArrayToDisplay()
-creatingForm()
+// liDogEl.addEventListener('click', function (event) {
+//     event.preventDefault()
+//     for (const element of data) {
+//         if (element.name === ) {
+//             createElement(element)
+//         }
+//     }
+// })
