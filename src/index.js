@@ -52,6 +52,11 @@ function createElement(dog) {
 
 }
 
+function deleteElement() {
+    const sectionEl = document.createElement('section')
+    sectionEl.delete()
+}
+
 function creatingForm(dog) {
 
     //get the section from html
@@ -141,12 +146,55 @@ function creatingForm(dog) {
 
 }
 
+//this displays the data obect 
+function loopingArrayToDisplay() {
+    let element
+    for (element of data) {
+        interactiveHeaderButton(element)
+    }
+
+    console.log(`Name of the dog : ${element.name}
+    bio is : ${element.bio}
+    and the image src is: ${element.image}`)
+}
+
+//header menu wich is the list with names of dog
+function interactiveHeaderButton(dog) {
+
+    const ulEl = document.querySelector('.dogs-list')
+
+    //create a dog list item header menu
+    const liEl = document.createElement('li')
+    liEl.setAttribute('class', 'dogs-list__button')
+    liEl.textContent = dog.name
+
+    //apend the li to ul
+    ulEl.append(liEl)
+
+    //adding event listeners
+    liEl.addEventListener('click', function (event) {
+
+        for (const element of data) {
+
+            if (element.name === liEl.textContent) {
+                createElement(element)
+            }
+
+        }
+
+    })
+
+}
+
+loopingArrayToDisplay()
+
 const liEl = document.querySelector('.dogs-list__button--add')
 liEl.addEventListener('click', function (event) {
     creatingForm(data)
 })
 
-const liDogEl = document.querySelectorAll('.dogs-list__button')
+// const liDogEl = document.querySelectorAll('.dogs-list__button')
+
 // const form = document.querySelector('.form')
 // const formValue = form.name.value
 
