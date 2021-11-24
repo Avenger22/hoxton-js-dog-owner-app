@@ -1,6 +1,7 @@
 console.log(data);
-
 // WRITE YOUR CODE BELOW!
+
+//this creates element form the object
 function createElement(dog) {
 
     const mainEl = document.querySelector('.main')
@@ -36,7 +37,7 @@ function createElement(dog) {
 
     //create an em
     const emEl = document.createElement('em')
-    emEl.textContent = "Is naughty? "
+    emEl.textContent = "Is naughty ? "
     //create an p2
     const p2El = document.createElement('p')
     p2El.append(emEl)
@@ -52,9 +53,11 @@ function createElement(dog) {
 
 }
 
+//this displays the data obect 
 function loopingArrayToDisplay() {
     for (const element of data) {
         createElement(element)
+        interactiveHeaderButton(element)
     }
 
     console.log(`Name of the dog : ${element.name}
@@ -62,4 +65,77 @@ function loopingArrayToDisplay() {
     and the image src is: ${element.image}`)
 }
 
+//header menu wich is the list with names of dog
+function interactiveHeaderButton(dog) {
+    const ulEl = document.querySelector('.dogs-list')
+
+    //create a dog list item header menu
+    const liEl = document.createElement('li')
+    liEl.setAttribute('class', 'dogs-list__button')
+    liEl.textContent = dog.name
+
+    //apend the li to ul
+    ulEl.append(liEl)
+}
+
+function creatingForm() {
+
+    //get the section from html
+    const sectionEl = document.querySelector('.main__dog-section')
+
+    //create h2
+    const h2El = document.createElement('h2')
+    h2El.textContent = 'Add a new Dog'
+
+    //create form
+    const formEl = document.createElement('form')
+    formEl.setAttribute('class', 'form')
+    
+    //LABEL 1
+    const labelEl1 = document.createElement('label')
+    labelEl1.setAttribute('for', 'name')
+    labelEl1.textContent = "Dog's name"
+
+    const inputEl1 = document.createElement('input')
+    inputEl1.setAttribute('type', 'text')
+    inputEl1.setAttribute('id', 'name')
+    inputEl1.setAttribute('name', 'name')
+    
+    //LABEL 2
+    const labelEl2 = document.createElement('label')
+    labelEl2.setAttribute('for', 'image')
+    labelEl2.textContent = "Dog's picture"
+
+    const inputEl2 = document.createElement('input')
+    inputEl2.setAttribute('type', 'url')
+    inputEl2.setAttribute('id', 'image')
+    inputEl2.setAttribute('name', 'image')
+    
+    //LABEL3
+    const labelEl3 = document.createElement('label')
+    labelEl3.setAttribute('for', 'bio')
+    labelEl3.textContent = "Dog's bio"
+
+    const textAreaEl = document.createElement('textarea')
+    textAreaEl.setAttribute('rows', '5')
+    textAreaEl.setAttribute('id', 'bio')
+
+    //submit input
+    const inputEl3 = document.createElement('input')
+    inputEl3.setAttribute('type', 'submit')
+    inputEl3.setAttribute('id', 'submit')
+    inputEl3.setAttribute('name', 'submit')
+    inputEl3.setAttribute('value', "Let's add a dog!")
+    inputEl3.setAttribute('class', 'form__button')
+
+    //appending
+    formEl.append(labelEl1, inputEl1, 
+    labelEl2, inputEl2, 
+    labelEl3, textAreaEl, inputEl3)
+
+    sectionEl.append(h2El, formEl)
+
+}
+
 loopingArrayToDisplay()
+creatingForm()
